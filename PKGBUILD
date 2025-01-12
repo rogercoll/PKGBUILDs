@@ -1,7 +1,7 @@
 # Maintainer: Roger Coll <rogercoll at protonmail dot com>
 
 pkgname=otelcol
-pkgver=0.112.0
+pkgver=0.117.0
 pkgrel=1
 epoch=
 pkgdesc="OpenTelemetry Collector core distribution"
@@ -25,15 +25,15 @@ source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
     "$pkgname.conf"
     "config.yaml"
 )
-sha512sums=('94bdcec27803de761ddd11226c470f2c5b29b78bcc4dc39ef94ebb6428114a62fa18fb714b3ed33ae8b38cd679daf0d5b89ff8deb4faeab5e78a88bd13d9f9d6'
+sha512sums=('594cf459c7f99bb5ab8e7d927aca2052bb5c50f405c4df961b85ef74f200ef8b7c19fea18c896033f1868bd43e1e5f374419ac9800658238e0c53bb93be4abbd'
             '351cb7da00ae09559ca3e48932c1f0e0a8ccd4f1bff982ce2ce8ab3b50b5eec3715f2e21c9c12d04568f6b764588a92f4641c741b148080b0222e591fb691102'
             'f51d0e59bcdcf0c1f871de1667ed15f3f500cde6aabe78d8a596c238b8a1a1daa59831a203756ac372e5c753c0db75786612c93b65b99542c2a0ffcb5023e1e4'
-            '11e66d39858f16db3c495e41a15fbbf4c84a2046c55c4fe8f647ecf6cbeebb64464c371f6aa2809d150bf32873e006157d6bb4ed912968057fa55e96722f6701')
+            'dbb544c505d67e0320a29126e919fdab0418e0dc66deda0b3660b762d974302d3eaa46251a731005b765385f71edd43c80a99e5141eba89841387a79fd28a948')
 
 
 build() {
 	cd "opentelemetry-collector-$pkgver"
-	make otelcorecol
+	make otelcorecol SRC_ROOT=${PWD}
 }
 
 
@@ -41,6 +41,6 @@ package() {
     install -Dm644 $pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     install -Dm644 $pkgname.conf "$pkgdir/etc/$pkgname/$pkgname.conf"
     install -Dm644 config.yaml "$pkgdir/etc/$pkgname/config.yaml"
-	cd "opentelemetry-collector-$pkgver"
+    cd "opentelemetry-collector-$pkgver"
     install -Dm755 bin/otelcorecol_linux_amd64 "$pkgdir/usr/bin/$pkgname"
 }

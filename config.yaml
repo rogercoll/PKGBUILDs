@@ -11,7 +11,7 @@ processors:
   batch:
 
 exporters:
-  logging:
+  debug:
     verbosity: detailed
 
 service:
@@ -21,11 +21,11 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logging]
+      exporters: [debug]
 
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logging]
+      exporters: [debug]
 
   extensions: []
