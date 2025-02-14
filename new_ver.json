@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "data": {
+    "otelcol": {
+      "version": "0.119.0",
+      "gitref": "refs/tags/v0.119.0",
+      "url": "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.119.0"
+    },
+    "otelcol-contrib": {
+      "version": "0.119.0",
+      "gitref": "refs/tags/v0.119.0",
+      "url": "https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.119.0"
+    }
+  }
+}
